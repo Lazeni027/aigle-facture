@@ -237,6 +237,35 @@
             padding: 18px;
             border: 1px solid #e0ece8;
         }
+        .doc-header {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 2px dashed #cfe6e0;
+            padding-bottom: 12px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .doc-infos {
+            font-size: 0.78rem;
+            color: #2d6a5c;
+        }
+        .preview-table {
+            width: 100%;
+            font-size: 0.82rem;
+            border-collapse: collapse;
+        }
+        .preview-table th, .preview-table td {
+            padding: 8px 4px;
+            border-bottom: 1px solid #eef2f5;
+        }
+        .right {
+            text-align: right;
+        }
+        .total-preview {
+            margin-top: 16px;
+            text-align: right;
+            font-weight: 500;
+        }
         .watermark-note {
             font-size: 0.68rem;
             text-align: center;
@@ -289,132 +318,6 @@
         .discount-money-input {
             background: #fff8e1;
         }
-
-        /* STYLES SPÉCIFIQUES POUR LE PDF */
-        .pdf-document {
-            font-family: 'Inter', sans-serif;
-            max-width: 100%;
-            background: white;
-        }
-        .pdf-header {
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 3px solid #00695c;
-        }
-        .pdf-header-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            margin-bottom: 10px;
-        }
-        .pdf-logo h2 {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: #00695c;
-            margin-bottom: 5px;
-        }
-        .pdf-logo p {
-            font-size: 0.7rem;
-            color: #2c6b5a;
-            margin: 2px 0;
-        }
-        .pdf-doc-title {
-            text-align: right;
-        }
-        .pdf-doc-title h1 {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: #004d40;
-        }
-        .pdf-doc-title p {
-            font-size: 0.7rem;
-            color: #5a7a6a;
-        }
-        .pdf-client-section {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            margin-bottom: 25px;
-            padding: 12px 0;
-            border-bottom: 1px dashed #cfe6e0;
-        }
-        .pdf-client-info {
-            font-size: 0.85rem;
-            line-height: 1.5;
-        }
-        .pdf-doc-ref {
-            text-align: right;
-            font-size: 0.85rem;
-        }
-        .pdf-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-        .pdf-table th {
-            background: #eef7f3;
-            padding: 12px 8px;
-            text-align: left;
-            font-weight: 600;
-            font-size: 0.8rem;
-            color: #004d40;
-            border-bottom: 2px solid #c0dfd6;
-        }
-        .pdf-table td {
-            padding: 10px 8px;
-            border-bottom: 1px solid #e2ece8;
-            font-size: 0.8rem;
-        }
-        .pdf-table .right {
-            text-align: right;
-        }
-        .pdf-totals {
-            margin-top: 25px;
-            padding-top: 15px;
-            border-top: 2px solid #e0ece8;
-            text-align: right;
-        }
-        .pdf-totals p {
-            margin: 6px 0;
-            font-size: 0.85rem;
-        }
-        .pdf-grand-total {
-            font-size: 1.2rem;
-            font-weight: 800;
-            color: #004d40;
-            margin-top: 10px;
-        }
-        .pdf-notes {
-            margin-top: 25px;
-            padding: 12px;
-            background: #f5fbf9;
-            border-radius: 12px;
-            font-size: 0.75rem;
-        }
-        .pdf-footer {
-            margin-top: 30px;
-            padding-top: 15px;
-            border-top: 1px solid #cfe6e0;
-            text-align: center;
-            font-size: 0.65rem;
-            color: #6f9a8a;
-        }
-        .pdf-signature {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 25px;
-            padding-top: 15px;
-            font-size: 0.7rem;
-            color: #548e7c;
-        }
-        .pdf-payment-badge {
-            background: #e8f5e9;
-            padding: 12px;
-            border-radius: 12px;
-            text-align: center;
-            margin: 15px 0;
-        }
     </style>
 </head>
 <body>
@@ -435,6 +338,7 @@
     </div>
 
     <div class="dashboard">
+        <!-- Colonne saisie -->
         <div class="card">
             <div class="card-header">
                 <i class="fas fa-edit"></i> Édition du document
@@ -502,6 +406,7 @@
             </div>
         </div>
 
+        <!-- Colonne aperçu -->
         <div class="card">
             <div class="card-header">
                 <i class="fas fa-print"></i> Aperçu & Impression
@@ -510,10 +415,10 @@
             <div class="card-body doc-preview">
                 <div id="livePreview"></div>
                 <div style="display: flex; gap: 15px; justify-content: flex-end; margin-top: 25px;">
-                    <button id="generatePdfBtn" class="btn btn-primary"><i class="fas fa-file-pdf"></i> 📄 Générer PDF</button>
+                    <button id="generatePdfBtn" class="btn btn-primary"><i class="fas fa-file-pdf"></i> 📄 Générer PDF (impression)</button>
                 </div>
                 <div class="watermark-note">
-                    <i class="fas fa-mobile-alt"></i> Aperçu temps réel – Document prêt pour impression
+                    <i class="fas fa-mobile-alt"></i> Aperçu temps réel – Document prêt pour impression / sauvegarde PDF
                 </div>
             </div>
         </div>
@@ -524,15 +429,22 @@
 </div>
 
 <script>
-    let items = [];
-    let currentDocType = "proforma";
+    // ******************* AIGLE SERVICE - PROFORMA & PAIEMENT ********************
+    let items = [];       // chaque élément: { description, quantity, unitPrice }
+    let currentDocType = "proforma";   // proforma ou payment
     
     const companyInfo = {
         name: "AIGLE SERVICE",
         address: "Korhogo, quartier Sodepra - Côte d'Ivoire",
-        phone: "+225 07 88 48 53 48 / 01 01 01 07 56"
+        phone: "+225 07 88 48 53 48 / 01 01 01 07 56",
+        email: "",
+        rc: "",
+        cc: "",
+        cta: "",
+        capital: ""
     };
     
+    // DOM references
     const itemsBody = document.getElementById('itemsBody');
     const totalHTSpan = document.getElementById('totalHT');
     const totalVATSpan = document.getElementById('totalVAT');
@@ -553,7 +465,8 @@
 
     function setDefaultDate() {
         if (!docDateInput.value) {
-            docDateInput.value = new Date().toISOString().slice(0,10);
+            const today = new Date().toISOString().slice(0,10);
+            docDateInput.value = today;
         }
     }
     
@@ -566,11 +479,15 @@
         });
         const taxRate = parseFloat(taxRateInput.value) || 0;
         const discountAmount = parseFloat(discountAmountInput.value) || 0;
-        let afterDiscountHT = Math.max(0, totalHT - discountAmount);
+        
+        // Appliquer remise en montant (soustraction directe)
+        let afterDiscountHT = totalHT - discountAmount;
+        if (afterDiscountHT < 0) afterDiscountHT = 0;
+        
         const vatAmount = afterDiscountHT * (taxRate / 100);
         const totalTTC = afterDiscountHT + vatAmount;
         
-        totalHTSpan.innerText = totalHT.toLocaleString('fr-FR', {minimumFractionDigits:2}) + " FCFA";
+        totalHTSpan.innerText = totalHT.toLocaleString('fr-FR', {minimumFractionDigits:2, maximumFractionDigits:2}) + " FCFA";
         totalVATSpan.innerText = vatAmount.toLocaleString('fr-FR', {minimumFractionDigits:2}) + " FCFA";
         totalDiscountSpan.innerText = discountAmount.toLocaleString('fr-FR', {minimumFractionDigits:2}) + " FCFA";
         grandTotalSpan.innerText = totalTTC.toLocaleString('fr-FR', {minimumFractionDigits:2}) + " FCFA";
@@ -581,193 +498,254 @@
     
     function escapeHtml(str) { 
         if(!str) return '';
-        return str.replace(/[&<>]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;'})[m] || m); 
+        return str.replace(/[&<>]/g, function(m){
+            if(m==='&') return '&amp;';
+            if(m==='<') return '&lt;';
+            if(m==='>') return '&gt;';
+            return m;
+        }); 
     }
     
     function renderEditableTable() {
         itemsBody.innerHTML = '';
         if (!items.length) {
-            itemsBody.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:20px;">➕ Ajoutez une prestation</td></tr>';
+            const emptyRow = document.createElement('tr');
+            emptyRow.innerHTML = `<td colspan="5" style="text-align:center; padding:18px; color:#7c9b8e;">➕ Ajoutez une prestation ci-dessus</td>`;
+            itemsBody.appendChild(emptyRow);
         } else {
             items.forEach((item, idx) => {
                 const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td><input type="text" class="item-desc-input" value="${escapeHtml(item.description)}" placeholder="Désignation"></td>
-                    <td><input type="number" class="item-qty-input" value="${item.quantity}" step="1" min="0"></td>
-                    <td><input type="number" class="item-price-input" value="${item.unitPrice}" step="10" min="0"></td>
-                    <td class="right" style="font-weight:500;">${((item.quantity||0)*(item.unitPrice||0)).toLocaleString('fr-FR')} FCFA</td>
-                    <td class="item-delete"><i class="fas fa-trash-alt"></i></td>
-                `;
-                const descInput = row.querySelector('.item-desc-input');
-                const qtyInput = row.querySelector('.item-qty-input');
-                const priceInput = row.querySelector('.item-price-input');
-                const deleteBtn = row.querySelector('.item-delete');
+                const descInput = document.createElement('input');
+                descInput.type = 'text';
+                descInput.className = 'item-desc-input';
+                descInput.value = item.description || '';
+                descInput.placeholder = 'ex: Prestation AIGLE SERVICE';
+                descInput.addEventListener('input', (e) => {
+                    items[idx].description = e.target.value;
+                    updatePreview();
+                    computeTotals();
+                });
+                const descCell = document.createElement('td');
+                descCell.appendChild(descInput);
                 
-                descInput.addEventListener('input', (e) => { items[idx].description = e.target.value; refreshPreview(); });
-                qtyInput.addEventListener('input', (e) => { items[idx].quantity = parseFloat(e.target.value) || 0; refreshPreview(); updateRowTotal(row, idx); });
-                priceInput.addEventListener('input', (e) => { items[idx].unitPrice = parseFloat(e.target.value) || 0; refreshPreview(); updateRowTotal(row, idx); });
-                deleteBtn.addEventListener('click', () => { items.splice(idx, 1); refreshAll(); });
+                const qtyInput = document.createElement('input');
+                qtyInput.type = 'number';
+                qtyInput.step = '1';
+                qtyInput.min = '0';
+                qtyInput.className = 'item-qty-input';
+                qtyInput.value = item.quantity;
+                qtyInput.addEventListener('input', (e) => {
+                    let val = parseFloat(e.target.value);
+                    if (isNaN(val)) val = 0;
+                    items[idx].quantity = val;
+                    computeTotals();
+                    updatePreview();
+                    updateRowTotalDisplay(row, idx);
+                });
+                const qtyCell = document.createElement('td');
+                qtyCell.appendChild(qtyInput);
                 
+                const priceInput = document.createElement('input');
+                priceInput.type = 'number';
+                priceInput.step = '10';
+                priceInput.min = '0';
+                priceInput.className = 'item-price-input';
+                priceInput.value = item.unitPrice;
+                priceInput.addEventListener('input', (e) => {
+                    let val = parseFloat(e.target.value);
+                    if (isNaN(val)) val = 0;
+                    items[idx].unitPrice = val;
+                    computeTotals();
+                    updatePreview();
+                    updateRowTotalDisplay(row, idx);
+                });
+                const priceCell = document.createElement('td');
+                priceCell.appendChild(priceInput);
+                
+                const totalCell = document.createElement('td');
+                totalCell.className = 'right';
+                totalCell.style.fontWeight = '500';
+                const qtyVal = parseFloat(item.quantity) || 0;
+                const priceVal = parseFloat(item.unitPrice) || 0;
+                totalCell.innerText = (qtyVal * priceVal).toLocaleString('fr-FR', {minimumFractionDigits:0}) + ' FCFA';
+                
+                const deleteCell = document.createElement('td');
+                deleteCell.className = 'item-delete';
+                const trashIcon = document.createElement('i');
+                trashIcon.className = 'fas fa-trash-alt';
+                trashIcon.style.cursor = 'pointer';
+                trashIcon.addEventListener('click', () => {
+                    items.splice(idx, 1);
+                    refreshAll();
+                });
+                deleteCell.appendChild(trashIcon);
+                
+                row.appendChild(descCell);
+                row.appendChild(qtyCell);
+                row.appendChild(priceCell);
+                row.appendChild(totalCell);
+                row.appendChild(deleteCell);
                 itemsBody.appendChild(row);
             });
         }
+        attachDynamicRowUpdates();
     }
     
-    function updateRowTotal(row, idx) {
-        if (row && items[idx]) {
+    function updateRowTotalDisplay(row, idx) {
+        if (row && idx < items.length) {
             const totalCell = row.cells[3];
-            const qty = parseFloat(items[idx].quantity) || 0;
-            const price = parseFloat(items[idx].unitPrice) || 0;
-            totalCell.innerText = (qty * price).toLocaleString('fr-FR') + ' FCFA';
+            if (totalCell) {
+                const qty = parseFloat(items[idx].quantity) || 0;
+                const price = parseFloat(items[idx].unitPrice) || 0;
+                totalCell.innerText = (qty * price).toLocaleString('fr-FR', {minimumFractionDigits:0}) + ' FCFA';
+            }
         }
     }
     
-    function getDocumentTitle() {
-        if (currentDocType === "proforma") return "FACTURE PROFORMA";
-        return "REÇU DE PAIEMENT";
+    function attachDynamicRowUpdates() {
+        const rows = itemsBody.querySelectorAll('tr');
+        rows.forEach((row, idx) => {
+            if (idx >= items.length) return;
+            const qty = parseFloat(items[idx].quantity) || 0;
+            const price = parseFloat(items[idx].unitPrice) || 0;
+            const totalCell = row.cells[3];
+            if (totalCell) totalCell.innerText = (qty * price).toLocaleString('fr-FR', {minimumFractionDigits:0}) + ' FCFA';
+        });
     }
     
-    function getDocumentSub() {
-        if (currentDocType === "proforma") return "Document proforma – En attente de règlement";
-        return "Document attestant du paiement – Quittance valable";
+    function getDocumentTitleAndSub() {
+        if (currentDocType === "proforma") {
+            return { 
+                title: "FACTURE PROFORMA", 
+                sub: "Document proforma – En attente de règlement", 
+                badge: "PROFORMA",
+                paymentSpecific: false
+            };
+        } else {
+            return { 
+                title: "REÇU DE PAIEMENT", 
+                sub: "Document attestant du paiement – Quittance valable", 
+                badge: "PAIEMENT",
+                paymentSpecific: true
+            };
+        }
     }
     
-    function generatePDFContent() {
+    function updatePreview() {
         const totals = computeTotals();
         const docNumber = docNumberInput.value.trim() || "AIGLE-001";
-        const docDate = docDateInput.value || new Date().toLocaleDateString('fr-FR');
+        const docDate = docDateInput.value || "Date non définie";
         const client = clientNameInput.value.trim() || "Client non spécifié";
-        const clientEmail = clientEmailInput.value.trim();
-        const clientAddr = clientAddressInput.value.trim();
-        const notes = notesField.value.trim();
+        const clientEmail = clientEmailInput.value.trim() || "";
+        const clientAddr = clientAddressInput.value.trim() || "";
+        const notes = notesField.value.trim() || "";
         const taxRate = totals.taxRate;
         const discountAmount = totals.discountAmount;
         const totalHT = totals.totalHT;
+        const afterDiscountHT = totals.afterDiscountHT;
         const vatAmount = totals.vatAmount;
         const totalTTC = totals.totalTTC;
-        const title = getDocumentTitle();
-        const sub = getDocumentSub();
-        const isPayment = currentDocType === "payment";
+        const { title, sub, paymentSpecific } = getDocumentTitleAndSub();
         
         let rowsHtml = "";
         items.forEach(item => {
             const qty = parseFloat(item.quantity) || 0;
             const price = parseFloat(item.unitPrice) || 0;
-            const totalLine = qty * price;
-            const desc = item.description?.trim() || "—";
-            rowsHtml += `<tr><td>${escapeHtml(desc)}</td><td class="right">${qty}</td><td class="right">${price.toFixed(2)} FCFA</td><td class="right">${totalLine.toLocaleString('fr-FR')} FCFA</td></tr>`;
+            const totalLine = (qty * price).toFixed(2);
+            const descriptionDisplay = item.description && item.description.trim() !== "" ? item.description : "—";
+            rowsHtml += `<tr><td>${escapeHtml(descriptionDisplay)}</td><td class="right">${qty}</td><td class="right">${price.toFixed(2)} FCFA</td><td class="right">${parseFloat(totalLine).toLocaleString('fr-FR')} FCFA</td></tr>`;
         });
-        if(items.length === 0) rowsHtml = "<tr><td colspan='4' style='text-align:center;padding:20px;'>Aucun article</td></tr>";
+        if(items.length === 0) rowsHtml = "<tr><td colspan='4' style='text-align:center;padding:20px;'>Aucun article – ajoutez une prestation</td></tr>";
         
-        const discountLine = discountAmount > 0 ? `<p>Remise : - ${discountAmount.toLocaleString('fr-FR')} FCFA</p>` : '';
-        const paymentBadge = isPayment ? 
-            `<div class="pdf-payment-badge"><i class="fas fa-check-circle" style="color:#2e7d32;"></i> <strong>PAIEMENT ACCUSÉ</strong><br>Montant réglé : ${totalTTC.toLocaleString('fr-FR')} FCFA<br>Date : ${docDate}</div>` :
-            `<div class="pdf-payment-badge" style="background:#fef5e8;"><i class="fas fa-hourglass-half"></i> Document proforma – En attente de validation du paiement</div>`;
+        let paymentExtraHtml = "";
+        if (paymentSpecific) {
+            paymentExtraHtml = `
+                <div style="background: #e8f5e9; padding: 14px; border-radius: 16px; margin: 15px 0; text-align: center; border: 1px solid #a5d6a7;">
+                    <i class="fas fa-check-circle" style="color:#2e7d32; font-size: 1.3rem;"></i>
+                    <strong style="color:#1b5e20;"> PAIEMENT ACCUSÉ</strong><br>
+                    <span style="font-size:0.85rem;">Montant réglé : ${totalTTC.toLocaleString('fr-FR', {minimumFractionDigits:2})} FCFA</span><br>
+                    <span style="font-size:0.7rem;">Date de règlement : ${docDate} | Mode: Mobile Money / Espèces</span>
+                </div>
+            `;
+        } else {
+            paymentExtraHtml = `<div class="payment-highlight" style="background:#fef5e8; margin-top:12px;"><i class="fas fa-hourglass-half"></i> Document proforma – En attente de validation du paiement</div>`;
+        }
         
-        return `
-            <div class="pdf-document">
-                <div class="pdf-header">
-                    <div class="pdf-header-top">
-                        <div class="pdf-logo">
-                            <h2>🦅 AIGLE SERVICE</h2>
-                            <p>${escapeHtml(companyInfo.address)}</p>
-                            <p>📞 ${escapeHtml(companyInfo.phone)}</p>
+        // Afficher la ligne de remise seulement si montant > 0
+        const discountLine = discountAmount > 0 ? `<div>Remise : - ${discountAmount.toLocaleString('fr-FR', {minimumFractionDigits:2})} FCFA</div>` : '';
+        
+        livePreviewDiv.innerHTML = `
+            <div style="font-family: 'Inter', sans-serif;">
+                <div style="margin-bottom: 20px; padding-bottom: 12px; border-bottom: 3px solid #00695c;">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap;">
+                        <div>
+                            <div style="font-weight: 800; font-size: 1.3rem; color: #00695c;">🦅 AIGLE SERVICE</div>
+                            <div style="font-size: 0.65rem; color: #2c6b5a;">${escapeHtml(companyInfo.address)}</div>
+                            <div style="font-size: 0.65rem; color: #2c6b5a;">📞 ${escapeHtml(companyInfo.phone)}</div>
                         </div>
-                        <div class="pdf-doc-title">
-                            <h1>${title}</h1>
-                            <p>${sub}</p>
+                        <div style="text-align: right;">
+                            <div style="font-size: 1.6rem; font-weight: 800; color: #004d40;">${title}</div>
+                            <div style="font-size: 0.65rem;">${sub}</div>
                         </div>
                     </div>
                 </div>
-                
-                <div class="pdf-client-section">
-                    <div class="pdf-client-info">
-                        <strong>Client :</strong> ${escapeHtml(client)}<br>
-                        ${clientEmail ? `📧 ${escapeHtml(clientEmail)}<br>` : ''}
-                        ${clientAddr ? escapeHtml(clientAddr) : ''}
-                    </div>
-                    <div class="pdf-doc-ref">
-                        <strong>N° ${escapeHtml(docNumber)}</strong><br>
-                        Date : ${escapeHtml(docDate)}
-                    </div>
+                <div class="doc-header" style="margin-top: 8px;">
+                    <div><strong>📄 ${escapeHtml(docNumber)}</strong><br>📅 ${escapeHtml(docDate)}</div>
+                    <div class="doc-infos"><strong>Client :</strong> ${escapeHtml(client)}<br>${clientEmail ? `📧 ${escapeHtml(clientEmail)}` : ''}</div>
                 </div>
-                
-                <table class="pdf-table">
-                    <thead>
-                        <tr><th>Désignation</th><th class="right">Qté</th><th class="right">Prix unit.</th><th class="right">Total HT</th></tr>
-                    </thead>
+                <div style="margin-bottom: 14px; font-size:0.8rem;">${escapeHtml(clientAddr)}</div>
+                <table class="preview-table" style="width:100%;">
+                    <thead><tr><th>Désignation</th><th class="right">Qté</th><th class="right">Prix unit.</th><th class="right">Total HT</th></tr></thead>
                     <tbody>${rowsHtml}</tbody>
                 </table>
-                
-                <div class="pdf-totals">
-                    <p>Total HT : ${totalHT.toLocaleString('fr-FR')} FCFA</p>
+                <div class="total-preview">
+                    <div>Total HT : ${totalHT.toLocaleString('fr-FR', {minimumFractionDigits:2})} FCFA</div>
                     ${discountLine}
-                    <p>TVA (${taxRate}%) : ${vatAmount.toLocaleString('fr-FR')} FCFA</p>
-                    <p class="pdf-grand-total">TOTAL ${isPayment ? 'RÉGLÉ' : 'À PAYER'} : ${totalTTC.toLocaleString('fr-FR')} FCFA</p>
+                    <div>TVA (${taxRate}%) : ${vatAmount.toLocaleString('fr-FR', {minimumFractionDigits:2})} FCFA</div>
+                    <div style="font-size:1.3rem; font-weight:800; margin-top:8px;"> TOTAL À PAYER : ${totalTTC.toLocaleString('fr-FR', {minimumFractionDigits:2})} FCFA</div>
                 </div>
-                
-                ${paymentBadge}
-                
-                <div class="pdf-notes">
-                    <i class="fas fa-wallet"></i> <strong>Modalités de paiement :</strong><br>
-                    ${escapeHtml(notes)}<br>
-                    <span style="font-size:0.7rem;">📱 Orange Money: +225 07 88 48 53 48 | MTN Money: 01 01 01 07 56</span>
+                ${paymentExtraHtml}
+                <div style="margin-top: 18px; background:#F7FCFA; padding:12px; border-radius: 16px;">
+                    <i class="fas fa-wallet"></i> <strong>Modalités :</strong> ${escapeHtml(notes)}<br>
+                    <span style="font-size:0.7rem;">Orange Money & Wave: +225 07 88 48 53 48 </span>
                 </div>
-                
-                <div class="pdf-signature">
-                    <span>Fait à Korhogo, le ${new Date().toLocaleDateString('fr-FR')}</span>
+                <div class="signature-area">
+                    <span>Korhogo, le ${new Date().toLocaleDateString('fr-FR')}</span>
                     <span>Signature client / Cachet</span>
                 </div>
-                
-                <div class="pdf-footer">
-                    AIGLE SERVICE – Votre partenaire de confiance
-                </div>
+                <div style="font-size:0.6rem; text-align:center; margin-top:14px;">AIGLE SERVICE – Votre partenaire de confiance</div>
             </div>
         `;
-    }
-    
-    function updatePreview() {
-        livePreviewDiv.innerHTML = generatePDFContent();
+        
         let label = currentDocType === "proforma" ? "📑 FACTURE PROFORMA" : "✅ REÇU DE PAIEMENT";
         currentDocTypeLabel.innerText = label;
         if (paymentInfoArea) {
             paymentInfoArea.style.display = currentDocType === "payment" ? "block" : "none";
             if (currentDocType === "payment") {
-                document.getElementById('paymentMethodInfo').innerHTML = `Montant total réglé : ${computeTotals().totalTTC.toLocaleString('fr-FR')} FCFA.`;
+                document.getElementById('paymentMethodInfo').innerHTML = `Montant total réglé : ${totals.totalTTC.toLocaleString('fr-FR', {minimumFractionDigits:0})} FCFA. Merci pour votre confiance.`;
             }
         }
     }
     
-    function refreshPreview() {
-        computeTotals();
-        updatePreview();
-    }
-    
     function generatePDF() {
-        const content = generatePDFContent();
+        const previewElem = document.getElementById('livePreview');
+        if (!previewElem) return;
         const opt = {
-            margin: [0.5, 0.5, 0.5, 0.5],
-            filename: `${currentDocType === "proforma" ? "PROFORMA" : "PAIEMENT"}_${docNumberInput.value.trim() || 'document'}_AIGLE.pdf`,
-            image: { type: 'jpeg', quality: 0.98 },
-            html2canvas: { scale: 2, letterRendering: true },
-            jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+            margin:        [0.5, 0.5, 0.5, 0.5],
+            filename:     `${currentDocType === "proforma" ? "PROFORMA" : "PAIEMENT"}_${docNumberInput.value.trim() || 'document'}_AIGLE.pdf`,
+            image:        { type: 'jpeg', quality: 0.98 },
+            html2canvas:  { scale: 2, letterRendering: true },
+            jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
         };
-        const element = document.createElement('div');
-        element.innerHTML = content;
-        element.style.padding = '20px';
-        element.style.background = 'white';
-        document.body.appendChild(element);
-        html2pdf().set(opt).from(element).save().then(() => {
-            document.body.removeChild(element);
-        });
+        html2pdf().set(opt).from(previewElem).save();
     }
     
     function addNewEmptyLine() {
         items.push({ description: "", quantity: 1, unitPrice: 0 });
         refreshAll();
         setTimeout(() => {
-            const lastInput = document.querySelector('#itemsBody tr:last-child .item-desc-input');
-            if (lastInput) lastInput.focus();
+            const lastDesc = document.querySelector('#itemsBody tr:last-child .item-desc-input');
+            if (lastDesc) lastDesc.focus();
         }, 60);
     }
     
@@ -776,10 +754,10 @@
         let prefix = "AIGLE-";
         let oldVal = docNumberInput.value;
         if (!oldVal.startsWith(prefix)) {
-            let clean = oldVal.replace(/^[A-Z]+-/i, '');
+            let clean = oldVal.replace(/^(AIGLE-)/, '');
             docNumberInput.value = prefix + (clean || "001");
         }
-        refreshPreview();
+        updatePreview();
     }
     
     function resetForm() {
@@ -789,7 +767,7 @@
         clientNameInput.value = "";
         clientEmailInput.value = "";
         clientAddressInput.value = "";
-        notesField.value = "Paiement : Orange Money, Wave, Virement. Merci.";
+        notesField.value = "Paiement : Orange Money, Wave. Merci.";
         taxRateInput.value = "0";
         discountAmountInput.value = "0";
         currentDocType = "proforma";
@@ -799,7 +777,8 @@
     
     function refreshAll() {
         renderEditableTable();
-        refreshPreview();
+        updatePreview();
+        computeTotals();
     }
     
     document.getElementById('addItemBtn').addEventListener('click', addNewEmptyLine);
@@ -808,16 +787,17 @@
     document.getElementById('resetFormBtn').addEventListener('click', resetForm);
     document.getElementById('generatePdfBtn').addEventListener('click', generatePDF);
     
-    taxRateInput.addEventListener('input', refreshPreview);
-    discountAmountInput.addEventListener('input', refreshPreview);
-    docNumberInput.addEventListener('input', refreshPreview);
-    docDateInput.addEventListener('input', refreshPreview);
-    clientNameInput.addEventListener('input', refreshPreview);
-    clientEmailInput.addEventListener('input', refreshPreview);
-    clientAddressInput.addEventListener('input', refreshPreview);
-    notesField.addEventListener('input', refreshPreview);
+    taxRateInput.addEventListener('input', () => { computeTotals(); updatePreview(); });
+    discountAmountInput.addEventListener('input', () => { computeTotals(); updatePreview(); });
+    docNumberInput.addEventListener('input', updatePreview);
+    docDateInput.addEventListener('input', updatePreview);
+    clientNameInput.addEventListener('input', updatePreview);
+    clientEmailInput.addEventListener('input', updatePreview);
+    clientAddressInput.addEventListener('input', updatePreview);
+    notesField.addEventListener('input', updatePreview);
     
     setDefaultDate();
+    // Initialisation : ligne vide avec désignation vide, quantité 1, prix 0
     items = [{ description: "", quantity: 1, unitPrice: 0 }];
     refreshAll();
     setDocType('proforma');
