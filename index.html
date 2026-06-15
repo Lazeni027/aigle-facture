@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
     <title>AIGLE SERVICE | Facture Proforma & Paiement</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -15,9 +15,9 @@
         }
 
         body {
-            background: #f5f5f5;
+            background: #f0f0f0;
             font-family: 'Inter', sans-serif;
-            padding: 24px 20px;
+            padding: 16px 12px;
             color: #1e1e1e;
         }
 
@@ -26,64 +26,63 @@
             margin: 0 auto;
         }
 
-        /* HEADER - Orange, Gris, Noir */
+        /* HEADER - Orange, Gris, Noir (sans emoji) */
         .main-header {
             background: #1a1a1a;
-            border-radius: 24px;
-            padding: 20px 28px;
-            margin-bottom: 28px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            padding: 18px 22px;
+            margin-bottom: 24px;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 16px;
+            gap: 14px;
             border-bottom: 3px solid #f39c12;
         }
 
         .logo-area h1 {
-            font-size: 1.9rem;
+            font-size: 1.6rem;
             font-weight: 800;
             color: #f39c12;
-            letter-spacing: -0.5px;
+            letter-spacing: -0.3px;
         }
 
         .company-details {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: #b0b0b0;
-            margin-top: 6px;
-            line-height: 1.5;
+            margin-top: 5px;
+            line-height: 1.4;
         }
 
         .company-details i {
-            width: 20px;
+            width: 18px;
             color: #f39c12;
         }
 
         .action-buttons {
             display: flex;
-            gap: 12px;
+            gap: 10px;
             flex-wrap: wrap;
         }
 
         .btn {
             border: none;
-            padding: 10px 22px;
+            padding: 8px 18px;
             border-radius: 40px;
             font-weight: 600;
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             cursor: pointer;
             transition: all 0.2s ease;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
         }
 
         .btn-proforma {
             background: #f39c12;
-            border: none;
             color: #1a1a1a;
-            box-shadow: 0 4px 10px rgba(243, 156, 18, 0.3);
+            box-shadow: 0 3px 8px rgba(243, 156, 18, 0.3);
         }
 
         .btn-proforma:hover {
@@ -93,7 +92,6 @@
 
         .btn-payment {
             background: #333333;
-            border: none;
             color: white;
         }
 
@@ -111,102 +109,97 @@
         .btn-outline:hover {
             background: #f39c12;
             color: #1a1a1a;
-            transform: translateY(-2px);
         }
 
-        /* GRILLE PRINCIPALE */
         .dashboard {
             display: grid;
             grid-template-columns: 1fr 1.2fr;
-            gap: 28px;
+            gap: 24px;
         }
 
-        @media (max-width: 900px) {
+        @media (max-width: 880px) {
             .dashboard {
                 grid-template-columns: 1fr;
-                gap: 24px;
+                gap: 20px;
             }
         }
 
-        /* CARDS */
         .card {
             background: white;
-            border-radius: 24px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
             border: 1px solid #e0e0e0;
             overflow: hidden;
         }
 
         .card-header {
-            padding: 18px 24px;
+            padding: 14px 20px;
             border-bottom: 2px solid #f39c12;
             background: #fafafa;
             font-weight: 700;
-            font-size: 1.2rem;
+            font-size: 1rem;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             color: #1a1a1a;
         }
 
         .card-header i {
             color: #f39c12;
-            font-size: 1.25rem;
+            font-size: 1.1rem;
         }
 
         .card-body {
-            padding: 24px;
+            padding: 18px;
         }
 
-        /* FORMULAIRES */
         .form-row {
             display: flex;
             flex-wrap: wrap;
-            gap: 16px;
-            margin-bottom: 20px;
+            gap: 12px;
+            margin-bottom: 16px;
         }
 
         .form-group {
             flex: 1;
-            min-width: 140px;
+            min-width: 130px;
         }
 
         label {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             text-transform: uppercase;
             font-weight: 700;
-            letter-spacing: 0.6px;
+            letter-spacing: 0.5px;
             color: #f39c12;
             display: block;
-            margin-bottom: 6px;
+            margin-bottom: 5px;
         }
 
-        input, textarea {
+        input, textarea, select {
             width: 100%;
-            padding: 12px 14px;
-            border-radius: 16px;
+            padding: 10px 12px;
+            border-radius: 14px;
             border: 1.5px solid #e0e0e0;
             font-family: 'Inter', monospace;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             transition: 0.2s;
             background: white;
         }
 
-        input:focus, textarea:focus {
+        input:focus, textarea:focus, select:focus {
             outline: none;
             border-color: #f39c12;
             box-shadow: 0 0 0 3px rgba(243, 156, 18, 0.15);
         }
 
-        /* TABLE DES ARTICLES */
         .items-table {
             width: 100%;
             border-collapse: collapse;
-            margin: 18px 0;
+            margin: 14px 0;
         }
 
         .items-table th, .items-table td {
-            padding: 12px 6px;
+            padding: 10px 4px;
             text-align: left;
             border-bottom: 1px solid #eeeeee;
             vertical-align: middle;
@@ -215,33 +208,32 @@
         .items-table th {
             font-weight: 700;
             color: #f39c12;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             background: #fafafa;
         }
 
         .item-desc-input {
             width: 100%;
-            min-width: 160px;
-            padding: 8px 10px;
-            border-radius: 14px;
+            min-width: 140px;
+            padding: 7px 8px;
+            border-radius: 12px;
             border: 1px solid #e0e0e0;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
         }
 
         .item-qty-input, .item-price-input {
-            width: 85px;
-            padding: 8px 6px;
-            border-radius: 14px;
+            width: 75px;
+            padding: 7px 5px;
+            border-radius: 12px;
             border: 1px solid #e0e0e0;
             text-align: right;
         }
 
         .item-delete {
-            width: 36px;
+            width: 32px;
             text-align: center;
             cursor: pointer;
             color: #999;
-            font-size: 1rem;
         }
 
         .item-delete:hover {
@@ -251,15 +243,15 @@
         .add-item-btn {
             background: #f5f5f5;
             border: 1px solid #e0e0e0;
-            padding: 10px 18px;
+            padding: 8px 16px;
             border-radius: 30px;
             font-weight: 500;
-            margin-top: 8px;
+            margin-top: 6px;
             cursor: pointer;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             color: #1a1a1a;
         }
 
@@ -271,39 +263,39 @@
 
         .totals {
             background: #fafafa;
-            border-radius: 20px;
-            padding: 16px 20px;
-            margin-top: 20px;
+            border-radius: 16px;
+            padding: 12px 16px;
+            margin-top: 16px;
             text-align: right;
             border: 1px solid #eeeeee;
         }
 
         .totals p {
-            margin: 6px 0;
+            margin: 4px 0;
+            font-size: 0.85rem;
         }
 
         .grand-total {
-            font-size: 1.35rem;
+            font-size: 1.2rem;
             font-weight: 800;
             color: #f39c12;
         }
 
-        /* APERÇU STYLE PRO */
         .doc-preview {
             background: #ffffff;
-            border-radius: 24px;
-            padding: 20px;
+            border-radius: 20px;
+            padding: 16px;
             border: 1px solid #e0e0e0;
         }
 
         .preview-table {
             width: 100%;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             border-collapse: collapse;
         }
 
         .preview-table th, .preview-table td {
-            padding: 10px 5px;
+            padding: 8px 4px;
             border-bottom: 1px solid #f0f0f0;
         }
 
@@ -312,10 +304,10 @@
         }
 
         .signature-area {
-            margin-top: 20px;
-            padding-top: 14px;
+            margin-top: 16px;
+            padding-top: 12px;
             border-top: 1px dashed #ccc;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             display: flex;
             justify-content: space-between;
             color: #666;
@@ -323,44 +315,40 @@
 
         .payment-request-box {
             background: #fff8f0;
-            border-radius: 20px;
-            padding: 14px 18px;
-            margin: 18px 0 8px;
-            border-left: 5px solid #f39c12;
-        }
-
-        .payment-request-box strong {
-            color: #e67e22;
+            border-radius: 16px;
+            padding: 12px 14px;
+            margin: 14px 0 6px;
+            border-left: 4px solid #f39c12;
         }
 
         .payment-received-box {
             background: #f0f0f0;
-            border-radius: 20px;
-            padding: 14px 18px;
-            margin: 18px 0 8px;
-            border-left: 5px solid #f39c12;
+            border-radius: 16px;
+            padding: 12px 14px;
+            margin: 14px 0 6px;
+            border-left: 4px solid #f39c12;
         }
 
         .watermark-note {
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             text-align: center;
-            margin-top: 20px;
+            margin-top: 16px;
             color: #999;
         }
 
         footer {
             text-align: center;
-            margin-top: 40px;
-            font-size: 0.7rem;
+            margin-top: 32px;
+            font-size: 0.65rem;
             color: #888;
         }
 
         .badge-paid {
             background: #f39c12;
             color: #1a1a1a;
-            padding: 4px 12px;
-            border-radius: 40px;
-            font-size: 0.7rem;
+            padding: 3px 10px;
+            border-radius: 30px;
+            font-size: 0.65rem;
             font-weight: 700;
             display: inline-block;
         }
@@ -369,10 +357,29 @@
             transform: scale(0.97);
         }
 
-        .info-note {
-            font-size: 0.7rem;
-            color: #f39c12;
-            margin-top: 5px;
+        input[readonly] {
+            background: #f9f9f9;
+            font-weight: 600;
+        }
+
+        /* Ajustements mobile */
+        @media (max-width: 550px) {
+            body {
+                padding: 12px 8px;
+            }
+            .card-body {
+                padding: 14px;
+            }
+            .items-table th, .items-table td {
+                padding: 6px 2px;
+            }
+            .item-qty-input, .item-price-input {
+                width: 65px;
+            }
+            .btn {
+                padding: 6px 14px;
+                font-size: 0.7rem;
+            }
         }
     </style>
 </head>
@@ -382,59 +389,58 @@
         <div class="logo-area">
             <h1><i class="fas fa-eagle"></i> AIGLE SERVICE</h1>
             <div class="company-details">
-                <div><i class="fas fa-map-marker-alt"></i> Korhogo, quartier Sodepra - Côte d'Ivoire</div>
+                <div><i class="fas fa-map-marker-alt"></i> Korhogo, quartier Sodepra - Cote d'Ivoire</div>
                 <div><i class="fas fa-phone-alt"></i> +225 07 88 48 53 48 / 01 01 01 07 56</div>
             </div>
         </div>
         <div class="action-buttons">
-            <button id="createProformaBtn" class="btn btn-proforma"><i class="fas fa-file-invoice"></i> Demande de paiement (Proforma)</button>
-            <button id="createPaymentBtn" class="btn btn-payment"><i class="fas fa-check-circle"></i> Facture définitive (Payé)</button>
-            <button id="resetBtn" class="btn btn-outline"><i class="fas fa-sync-alt"></i> Nouveau document</button>
+            <button id="createProformaBtn" class="btn btn-proforma"><i class="fas fa-file-invoice"></i> Demande paiement</button>
+            <button id="createPaymentBtn" class="btn btn-payment"><i class="fas fa-check-circle"></i> Facture payee</button>
+            <button id="resetBtn" class="btn btn-outline"><i class="fas fa-sync-alt"></i> Nouveau</button>
         </div>
     </div>
 
     <div class="dashboard">
-        <!-- PANEL SAISIE -->
         <div class="card">
             <div class="card-header">
-                <i class="fas fa-edit"></i> Détails de la prestation
+                <i class="fas fa-edit"></i> Details de la prestation
             </div>
             <div class="card-body">
                 <div class="form-row">
                     <div class="form-group">
-                        <label><i class="fas fa-hashtag"></i> N° document</label>
+                        <label>N° document</label>
                         <input type="text" id="docNumber" readonly style="background:#f9f9f9; font-weight:600;">
                     </div>
                     <div class="form-group">
-                        <label><i class="far fa-calendar-alt"></i> Date d'émission</label>
+                        <label>Date</label>
                         <input type="date" id="docDate">
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group">
-                        <label>Client / Société</label>
+                        <label>Client / Societe</label>
                         <input type="text" id="clientName" placeholder="Nom complet" value="">
                     </div>
                     <div class="form-group">
-                        <label>Téléphone client</label>
+                        <label>Telephone client</label>
                         <input type="tel" id="clientPhone" placeholder="+225 XX XX XX XX" value="">
                     </div>
                 </div>
                 <div class="form-group">
                     <label>Adresse client</label>
-                    <textarea rows="2" id="clientAddress" placeholder="Adresse complète">Korhogo, Côte d'Ivoire</textarea>
+                    <textarea rows="2" id="clientAddress" placeholder="Adresse complete">Korhogo, Cote d'Ivoire</textarea>
                 </div>
 
-                <label><i class="fas fa-cubes"></i> Articles / Prestations (HT)</label>
+                <label>Articles / Prestations (HT)</label>
                 <table class="items-table" id="itemsEditorTable">
                     <thead>
-                        <tr><th>Désignation</th><th>Qté</th><th>Prix unit. HT (FCFA)</th><th>Total HT</th><th></th></tr>
+                        <tr><th>Designation</th><th>Qte</th><th>Prix unit. HT (FCFA)</th><th>Total HT</th><th></th></tr>
                     </thead>
                     <tbody id="itemsBody"></tbody>
                 </table>
                 <button type="button" id="addItemBtn" class="add-item-btn"><i class="fas fa-plus-circle"></i> Ajouter une prestation</button>
 
-                <div class="form-row" style="margin-top: 20px;">
+                <div class="form-row" style="margin-top: 16px;">
                     <div class="form-group">
                         <label>Taux TVA (%)</label>
                         <input type="number" id="taxRate" step="0.5" value="0">
@@ -448,49 +454,44 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Informations complémentaires</label>
-                    <textarea rows="2" id="notesField" placeholder="Conditions particulières"></textarea>
+                    <label>Informations complementaires</label>
+                    <textarea rows="2" id="notesField" placeholder="Conditions particulieres"></textarea>
                 </div>
             </div>
         </div>
 
-        <!-- APERÇU DYNAMIQUE PRO -->
         <div class="card">
             <div class="card-header">
                 <i class="fas fa-eye"></i> Document officiel
-                <span id="docTypeBadge" style="margin-left: auto; font-size: 0.7rem; background: #f39c12; color: #1a1a1a; padding: 4px 12px; border-radius: 30px;">Proforma</span>
+                <span id="docTypeBadge" style="margin-left: auto; font-size: 0.65rem; background: #f39c12; color: #1a1a1a; padding: 3px 10px; border-radius: 30px;">Proforma</span>
             </div>
             <div class="card-body doc-preview">
                 <div id="livePreview"></div>
-                <div style="display: flex; gap: 14px; justify-content: flex-end; margin-top: 25px;">
-                    <button id="generatePdfBtn" class="btn btn-proforma" style="background:#1a1a1a; color:#f39c12;"><i class="fas fa-file-pdf"></i> Générer PDF (A5)</button>
+                <div style="display: flex; gap: 12px; justify-content: flex-end; margin-top: 20px;">
+                    <button id="generatePdfBtn" class="btn btn-proforma" style="background:#1a1a1a; color:#f39c12;"><i class="fas fa-file-pdf"></i> Generer PDF (A5)</button>
                 </div>
                 <div class="watermark-note">
-                    <i class="fas fa-mobile-alt"></i> Document officiel AIGLE SERVICE – Impression PDF optimisée
+                    Document officiel AIGLE SERVICE - Impression PDF optimisee
                 </div>
             </div>
         </div>
     </div>
     <footer>
-        <i class="fas fa-shield-alt"></i> AIGLE SERVICE – Korhogo, Sodepra – Facturation professionnelle
+        AIGLE SERVICE – Korhogo, Sodepra – Facturation professionnelle
     </footer>
 </div>
 
 <script>
-    // --------------------------------------------------------------
-    // AIGLE SERVICE - Couleurs : Orange, Gris, Noir
-    // Génération automatique du numéro de document basé sur date/heure
-    // Désignations vidées par défaut
-    // --------------------------------------------------------------
+    // AIGLE SERVICE - Sans emoji, numerotation auto date/heure, designations vides
     const company = {
         name: "AIGLE SERVICE",
-        address: "Korhogo, quartier Sodepra - Côte d'Ivoire",
+        address: "Korhogo, quartier Sodepra - Cote d'Ivoire",
         phone: "+225 07 88 48 53 48 / 01 01 01 07 56",
         email: "contact@aigleservice.ci"
     };
 
     let items = [];
-    let currentType = "proforma"; // "proforma" ou "payment"
+    let currentType = "proforma";
 
     // DOM elements
     const itemsBody = document.getElementById('itemsBody');
@@ -508,7 +509,7 @@
     const docTypeBadge = document.getElementById('docTypeBadge');
     const livePreviewDiv = document.getElementById('livePreview');
 
-    // --- Génération du numéro document : AIG-YYYYMMDD-HHMMSS ---
+    // Generation numero document base date/heure (sans emoji)
     function generateDocumentNumber(prefix = "PRO") {
         const now = new Date();
         const year = now.getFullYear();
@@ -517,8 +518,7 @@
         const hours = String(now.getHours()).padStart(2, '0');
         const minutes = String(now.getMinutes()).padStart(2, '0');
         const seconds = String(now.getSeconds()).padStart(2, '0');
-        const unique = `${year}${month}${day}-${hours}${minutes}${seconds}`;
-        return `${prefix}-${unique}`;
+        return `${prefix}-${year}${month}${day}-${hours}${minutes}${seconds}`;
     }
 
     function updateDocNumber() {
@@ -532,7 +532,6 @@
         }
     }
 
-    // --- CALCUL TOTAUX ---
     function computeTotals() {
         let totalHT = 0;
         items.forEach(item => {
@@ -553,7 +552,7 @@
 
     function escapeHtml(str) {
         if (!str) return '';
-        return str.replace(/[&<>]/g, function (m) {
+        return str.replace(/[&<>]/g, function(m) {
             if (m === '&') return '&amp;';
             if (m === '<') return '&lt;';
             if (m === '>') return '&gt;';
@@ -561,22 +560,20 @@
         });
     }
 
-    // --- TABLEAU EDITABLE avec DESIGNATION VIDE ---
     function renderEditableTable() {
         itemsBody.innerHTML = '';
         if (items.length === 0) {
             const emptyRow = document.createElement('tr');
-            emptyRow.innerHTML = `<td colspan="5" style="text-align:center; padding:24px; color:#999;">➕ Cliquez sur "Ajouter une prestation"</td>`;
+            emptyRow.innerHTML = '<td colspan="5" style="text-align:center; padding:20px; color:#999;">Cliquez sur "Ajouter une prestation"</td>';
             itemsBody.appendChild(emptyRow);
         } else {
             items.forEach((item, idx) => {
                 const row = document.createElement('tr');
-
                 const descInput = document.createElement('input');
                 descInput.type = 'text';
                 descInput.className = 'item-desc-input';
                 descInput.value = item.desc || '';
-                descInput.placeholder = 'Ex: Prestation, service, produit';
+                descInput.placeholder = 'Ex: Prestation, service';
                 descInput.addEventListener('input', (e) => {
                     items[idx].desc = e.target.value;
                     updatePreview();
@@ -630,7 +627,6 @@
                     refreshAll();
                 });
                 delCell.appendChild(icon);
-
                 row.appendChild(descCell);
                 row.appendChild(qtyCell);
                 row.appendChild(priceCell);
@@ -653,12 +649,11 @@
         });
     }
 
-    // --- APERÇU AVEC TEXTES EXIGÉS ---
     function updatePreview() {
         const totals = computeTotals();
-        const docNumber = docNumberInput.value.trim() || 'DOC-001';
+        const docNumber = docNumberInput.value.trim();
         const docDate = docDateInput.value || 'Date';
-        const client = clientNameInput.value.trim() || 'Client non renseigné';
+        const client = clientNameInput.value.trim() || 'Client non renseigne';
         const clientPhone = clientPhoneInput.value.trim();
         const clientAddr = clientAddressInput.value.trim();
         const notes = notesField.value.trim();
@@ -668,35 +663,35 @@
 
         if (currentType === 'proforma') {
             title = 'DEMANDE DE PAIEMENT';
-            subtitle = 'Facture Proforma - Non acquittée';
-            badgeText = '📄 Proforma (à régler)';
+            subtitle = 'Facture Proforma - Non acquittee';
+            badgeText = 'Proforma (a regler)';
             paymentBlock = `
                 <div class="payment-request-box">
-                    <div style="font-weight:800; margin-bottom:8px;"><i class="fas fa-hand-holding-usd"></i> DEMANDE DE PAIEMENT — Veuillez régler le montant ci-dessous.</div>
-                    <div><strong>Coordonnées pour effectuer le paiement :</strong></div>
-                    <div style="margin: 8px 0 0 12px;">
-                        <div><i class="fab fa-opencart"></i> 📱 <strong>Orange Money / Wave :</strong> +225 07 88 48 53 48</div>
-                        <div><i class="fas fa-university"></i> 💵 <strong>Espèces :</strong> à déposer à l'agence AIGLE SERVICE, Korhogo (Sodepra)</div>
+                    <div style="font-weight:700; margin-bottom:6px;">DEMANDE DE PAIEMENT - Veuillez regler le montant ci-dessous.</div>
+                    <div><strong>Coordonnees pour effectuer le paiement :</strong></div>
+                    <div style="margin: 6px 0 0 12px;">
+                        <div> Orange Money / Wave : +225 07 88 48 53 48</div>
+                        <div> Especes : a deposer a l'agence AIGLE SERVICE, Korhogo (Sodepra)</div>
                     </div>
-                    <div style="margin-top: 12px; background:#fff6e8; padding:8px 12px; border-radius:14px; font-size:0.75rem;">
-                        <i class="fas fa-info-circle"></i> Veuillez nous communiquer la preuve de paiement après transfert (WhatsApp / SMS au +225 07 88 48 53 48).<br>
-                        <strong>Après paiement, nous émettrons la facture définitive.</strong>
+                    <div style="margin-top: 10px; background:#fff6e8; padding:6px 10px; border-radius:12px; font-size:0.7rem;">
+                        Veuillez nous communiquer la preuve de paiement apres transfert (WhatsApp / SMS au +225 07 88 48 53 48).<br>
+                        <strong>Apres paiement, nous emettrons la facture definitive.</strong>
                     </div>
                 </div>
             `;
         } else {
-            title = 'FACTURE DÉFINITIVE';
-            subtitle = 'Paiement intégralement reçu - Acquittée';
-            badgeText = '✅ Payé (Facture acquittée)';
+            title = 'FACTURE DEFINITIVE';
+            subtitle = 'Paiement integralement recu - Acquittee';
+            badgeText = 'Paye (Facture acquittee)';
             paymentBlock = `
                 <div class="payment-received-box">
-                    <div style="font-weight:800;"><i class="fas fa-check-circle"></i> PAIEMENT VALIDÉ — Facture acquittée</div>
-                    <div style="margin-top: 8px;">Le montant total de <strong>${totalTTC.toFixed(0)} FCFA</strong> a été réglé par le client via 
-                        <select id="paymentMethodConfirm" style="border:1px solid #ccc; padding:4px 8px; border-radius:20px; font-size:0.75rem; margin-left:4px;">
-                            <option>Orange Money</option><option>Wave</option><option>Espèces</option><option>Virement</option>
+                    <div style="font-weight:700;">PAIEMENT VALIDE - Facture acquittee</div>
+                    <div style="margin-top: 6px;">Le montant total de <strong>${totalTTC.toFixed(0)} FCFA</strong> a ete regle par le client via 
+                        <select id="paymentMethodConfirm" style="border:1px solid #ccc; padding:3px 6px; border-radius:16px; font-size:0.7rem; margin-left:4px;">
+                            <option>Orange Money</option><option>Wave</option><option>Especes</option><option>Virement</option>
                         </select>
                     </div>
-                    <div style="margin-top: 8px; font-size:0.7rem;"><i class="fas fa-stamp"></i> Cette facture annule et remplace toute proforma. Merci de votre confiance.</div>
+                    <div style="margin-top: 6px; font-size:0.65rem;">Cette facture annule et remplace toute proforma. Merci de votre confiance.</div>
                 </div>
             `;
             setTimeout(() => {
@@ -708,75 +703,67 @@
             }, 20);
         }
 
-        // Tableau des articles
         let rowsHtml = '';
         items.forEach(item => {
             const qty = parseFloat(item.qty) || 0;
             const price = parseFloat(item.price) || 0;
             const totalLine = (qty * price).toFixed(0);
-            const descText = item.desc?.trim() || '—';
+            const descText = item.desc?.trim() || '---';
             rowsHtml += `<tr><td style="padding:6px 4px;">${escapeHtml(descText)}</td><td class="right">${qty}</td><td class="right">${price.toFixed(0)} FCFA</td><td class="right">${totalLine} FCFA</td></tr>`;
         });
-        if (items.length === 0) rowsHtml = `<tr><td colspan="4" style="text-align:center;">Aucune prestation ajoutée</td></tr>`;
+        if (items.length === 0) rowsHtml = '<tr><td colspan="4" style="text-align:center;">Aucune prestation ajoutee</td></tr>';
 
         let extraPaymentLine = '';
         if (currentType === 'payment') {
             const selectedMethod = document.getElementById('paymentMethodConfirm')?.value || 'Orange Money';
-            extraPaymentLine = `<div style="font-size:0.7rem; margin-top: 6px;"><i class="fas fa-credit-card"></i> Mode de règlement utilisé : <strong>${selectedMethod}</strong></div>`;
+            extraPaymentLine = `<div style="font-size:0.7rem; margin-top: 5px;">Mode de reglement utilise : <strong>${selectedMethod}</strong></div>`;
             paymentBlock = paymentBlock.replace('</div>', extraPaymentLine + '</div>');
         }
 
         livePreviewDiv.innerHTML = `
             <div style="font-family: 'Inter', sans-serif;" id="previewContent">
-                <div style="margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px solid #f39c12;">
+                <div style="margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid #f39c12;">
                     <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap;">
                         <div>
-                            <div style="font-weight: 800; font-size: 1.35rem; color: #f39c12;"><i class="fas fa-eagle"></i> ${escapeHtml(company.name)}</div>
-                            <div style="font-size: 0.65rem; color: #666;">${escapeHtml(company.address)}</div>
-                            <div style="font-size: 0.65rem; color: #666;">📞 ${escapeHtml(company.phone)} | ✉️ ${escapeHtml(company.email)}</div>
+                            <div style="font-weight: 800; font-size: 1.2rem; color: #f39c12;">AIGLE SERVICE</div>
+                            <div style="font-size: 0.6rem; color: #666;">${escapeHtml(company.address)}</div>
+                            <div style="font-size: 0.6rem; color: #666;">Tel: ${escapeHtml(company.phone)} | Email: ${escapeHtml(company.email)}</div>
                         </div>
                         <div style="text-align: right;">
-                            <div style="font-size: 1.3rem; font-weight: 800; color: #f39c12;">${title}</div>
-                            <div style="font-size: 0.6rem; color: #666;">${subtitle}</div>
-                            ${currentType === 'payment' ? '<div class="badge-paid" style="margin-top:5px;">✔ PAIEMENT RECU</div>' : ''}
+                            <div style="font-size: 1.1rem; font-weight: 800; color: #f39c12;">${title}</div>
+                            <div style="font-size: 0.55rem; color: #666;">${subtitle}</div>
+                            ${currentType === 'payment' ? '<div class="badge-paid" style="margin-top:4px;">PAIEMENT RECU</div>' : ''}
                         </div>
                     </div>
                 </div>
-
-                <div style="display: flex; justify-content: space-between; margin-bottom: 18px; flex-wrap: wrap;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 12px; flex-wrap: wrap;">
                     <div><strong>N° ${escapeHtml(docNumber)}</strong><br>Date : ${escapeHtml(docDate)}</div>
-                    <div><strong>Client :</strong> ${escapeHtml(client)}<br>${clientPhone ? `📱 ${escapeHtml(clientPhone)}` : ''}</div>
+                    <div><strong>Client :</strong> ${escapeHtml(client)}<br>${clientPhone ? 'Tel: ' + escapeHtml(clientPhone) : ''}</div>
                 </div>
-                <div style="margin-bottom: 18px; font-size:0.75rem; color:#555;">📍 ${escapeHtml(clientAddr)}</div>
-
-                <table class="preview-table" style="width:100%; margin: 14px 0;">
-                    <thead><tr style="background:#f5f5f5;"><th>Désignation</th><th class="right">Qté</th><th class="right">Prix unit.</th><th class="right">Total HT</th></tr></thead>
+                <div style="margin-bottom: 12px; font-size:0.7rem; color:#555;">Adresse: ${escapeHtml(clientAddr)}</div>
+                <table class="preview-table" style="width:100%; margin: 10px 0;">
+                    <thead><tr style="background:#f5f5f5;"><th>Designation</th><th class="right">Qte</th><th class="right">Prix unit.</th><th class="right">Total HT</th></tr></thead>
                     <tbody>${rowsHtml}</tbody>
                 </table>
-
-                <div class="total-preview" style="margin-top: 8px; text-align: right;">
+                <div style="margin-top: 8px; text-align: right;">
                     <div>Total HT : ${totals.totalHT.toFixed(0)} FCFA</div>
-                    ${totals.taxRate > 0 ? `<div>TVA (${totals.taxRate}%) : ${totals.vat.toFixed(0)} FCFA</div>` : '<div>TVA 0% (exonération)</div>'}
-                    <div style="font-size:1.2rem; font-weight:800; margin-top: 8px; color:#f39c12;">💰 TOTAL TTC : ${totals.totalTTC.toFixed(0)} FCFA</div>
+                    ${totals.taxRate > 0 ? `<div>TVA (${totals.taxRate}%) : ${totals.vat.toFixed(0)} FCFA</div>` : '<div>TVA 0% (exoneration)</div>'}
+                    <div style="font-size:1.1rem; font-weight:800; margin-top: 6px; color:#f39c12;">TOTAL TTC : ${totals.totalTTC.toFixed(0)} FCFA</div>
                 </div>
-
                 ${paymentBlock}
-
-                ${notes ? `<div style="margin-top: 16px; background:#FAFAFA; padding:10px 14px; border-radius:16px; font-size:0.7rem;"><i class="fas fa-pen"></i> ${escapeHtml(notes)}</div>` : ''}
-
+                ${notes ? `<div style="margin-top: 12px; background:#FAFAFA; padding:8px 12px; border-radius:14px; font-size:0.65rem;">Note: ${escapeHtml(notes)}</div>` : ''}
                 <div class="signature-area">
-                    <span>Fait à Korhogo, le ${new Date().toLocaleDateString('fr-FR')}</span>
+                    <span>Fait a Korhogo, le ${new Date().toLocaleDateString('fr-FR')}</span>
                     <span>Signature client + Cachet AIGLE SERVICE</span>
                 </div>
-                <div style="font-size:0.6rem; text-align:center; margin-top:14px; color:#888;">
-                    ${currentType === 'proforma' ? 'Document de demande de paiement. En attente de régularisation.' : 'Facture définitive acquittée. Merci pour votre confiance.'}
+                <div style="font-size:0.55rem; text-align:center; margin-top:10px; color:#888;">
+                    ${currentType === 'proforma' ? 'Document de demande de paiement. En attente de regularisation.' : 'Facture definitive acquittee. Merci pour votre confiance.'}
                 </div>
             </div>
         `;
         docTypeBadge.innerText = badgeText;
     }
 
-    // --- GÉNÉRATION PDF A5 ---
     function generatePdf() {
         const element = document.getElementById('previewContent');
         if (!element) return;
@@ -812,8 +799,8 @@
         setDefaultDate();
         clientNameInput.value = "";
         clientPhoneInput.value = "";
-        clientAddressInput.value = "Korhogo, Côte d'Ivoire";
-        notesField.value = currentType === 'proforma' ? "Merci de nous faire parvenir la preuve de paiement." : "Paiement réceptionné avec succès.";
+        clientAddressInput.value = "Korhogo, Cote d'Ivoire";
+        notesField.value = currentType === 'proforma' ? "Merci de nous faire parvenir la preuve de paiement." : "Paiement receptionne avec succes.";
         taxRateInput.value = "0";
         refreshAll();
     }
@@ -823,18 +810,15 @@
         updateDocNumber();
         notesField.value = "Merci de nous faire parvenir la preuve de paiement.";
         resetForm();
-        refreshAll();
     }
 
     function switchToPayment() {
         currentType = "payment";
         updateDocNumber();
-        notesField.value = "Paiement intégral réceptionné. Facture acquittée.";
+        notesField.value = "Paiement integral receptionne. Facture acquittee.";
         resetForm();
-        refreshAll();
     }
 
-    // EVENTS
     document.getElementById('addItemBtn').addEventListener('click', addNewLine);
     document.getElementById('createProformaBtn').addEventListener('click', switchToProforma);
     document.getElementById('createPaymentBtn').addEventListener('click', switchToPayment);
@@ -848,7 +832,6 @@
     clientAddressInput.addEventListener('input', updatePreview);
     notesField.addEventListener('input', updatePreview);
 
-    // INITIALISATION
     setDefaultDate();
     items = [{ desc: "", qty: 1, price: 0 }];
     currentType = "proforma";
