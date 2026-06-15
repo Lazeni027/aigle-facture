@@ -675,8 +675,8 @@
                     <div style="font-weight:800; margin-bottom:8px;"><i class="fas fa-hand-holding-usd"></i> DEMANDE DE PAIEMENT — Veuillez régler le montant ci-dessous.</div>
                     <div><strong>Coordonnées pour effectuer le paiement :</strong></div>
                     <div style="margin: 8px 0 0 12px;">
-                        <div><i class="fab fa-opencart"></i><strong>Orange Money / Wave :</strong> +225 07 88 48 53 48</div>
-                        <div><i class="fas fa-university"></i><strong>Espèces :</strong> à déposer à l'agence AIGLE SERVICE, Korhogo (Sodepra)</div>
+                        <div><i class="fab fa-opencart"></i> 📱 <strong>Orange Money / Wave :</strong> +225 07 88 48 53 48</div>
+                        <div><i class="fas fa-university"></i> 💵 <strong>Espèces :</strong> à déposer à l'agence AIGLE SERVICE, Korhogo (Sodepra)</div>
                     </div>
                     <div style="margin-top: 12px; background:#fff6e8; padding:8px 12px; border-radius:14px; font-size:0.75rem;">
                         <i class="fas fa-info-circle"></i> Veuillez nous communiquer la preuve de paiement après transfert (WhatsApp / SMS au +225 07 88 48 53 48).<br>
@@ -745,9 +745,9 @@
 
                 <div style="display: flex; justify-content: space-between; margin-bottom: 18px; flex-wrap: wrap;">
                     <div><strong>N° ${escapeHtml(docNumber)}</strong><br>Date : ${escapeHtml(docDate)}</div>
-                    <div><strong>Client :</strong> ${escapeHtml(client)}<br>${clientPhone ?  ${escapeHtml(clientPhone)}` : ''}</div>
+                    <div><strong>Client :</strong> ${escapeHtml(client)}<br>${clientPhone ? `📱 ${escapeHtml(clientPhone)}` : ''}</div>
                 </div>
-                <div style="margin-bottom: 18px; font-size:0.75rem; color:#555;">${escapeHtml(clientAddr)}</div>
+                <div style="margin-bottom: 18px; font-size:0.75rem; color:#555;">📍 ${escapeHtml(clientAddr)}</div>
 
                 <table class="preview-table" style="width:100%; margin: 14px 0;">
                     <thead><tr style="background:#f5f5f5;"><th>Désignation</th><th class="right">Qté</th><th class="right">Prix unit.</th><th class="right">Total HT</th></tr></thead>
@@ -757,7 +757,7 @@
                 <div class="total-preview" style="margin-top: 8px; text-align: right;">
                     <div>Total HT : ${totals.totalHT.toFixed(0)} FCFA</div>
                     ${totals.taxRate > 0 ? `<div>TVA (${totals.taxRate}%) : ${totals.vat.toFixed(0)} FCFA</div>` : '<div>TVA 0% (exonération)</div>'}
-                    <div style="font-size:1.2rem; font-weight:800; margin-top: 8px; color:#f39c12;">TOTAL TTC : ${totals.totalTTC.toFixed(0)} FCFA</div>
+                    <div style="font-size:1.2rem; font-weight:800; margin-top: 8px; color:#f39c12;">💰 TOTAL TTC : ${totals.totalTTC.toFixed(0)} FCFA</div>
                 </div>
 
                 ${paymentBlock}
