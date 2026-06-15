@@ -87,6 +87,20 @@
             .doc-preview { padding: 0; border: none; }
             #previewContent { margin: 0; padding: 0.3cm; }
         }
+
+        .paymentMethodConfirm{
+             border:none;
+        background:transparent;
+        appearance:none;
+        -webkit-appearance:none;
+        -moz-appearance:none;
+        text-indent:0;
+        outline:none;
+        cursor:pointer;
+
+        }
+
+    
     </style>
 </head>
 <body>
@@ -95,7 +109,7 @@
         <div class="logo-area">
             <h1><i class="fas fa-eagle"></i> AIGLE SERVICE</h1>
             <div class="company-details">
-                <div><i class="fas fa-map-marker-alt"></i> Korhogo, quartier Sodepra - Cote d'Ivoire</div>
+                <div><i class="fas fa-map-marker-alt"></i> Korhogo, quartier Sodepra - Côte d'Ivoire</div>
                 <div><i class="fas fa-phone-alt"></i> +225 07 88 48 53 48 / 01 01 01 07 56</div>
             </div>
         </div>
@@ -118,7 +132,7 @@
                     <div class="form-group"><label>Client / Societe</label><input type="text" id="clientName" placeholder="Nom complet" value=""></div>
                     <div class="form-group"><label>Telephone client</label><input type="tel" id="clientPhone" placeholder="+225 XX XX XX XX" value=""></div>
                 </div>
-                <div class="form-group"><label>Adresse client</label><textarea rows="2" id="clientAddress" placeholder="Adresse complete">Korhogo, Cote d'Ivoire</textarea></div>
+                <div class="form-group"><label>Adresse client</label><textarea rows="2" id="clientAddress" placeholder="Adresse complete">Korhogo, Côte d'Ivoire</textarea></div>
 
                 <label>Articles / Prestations (HT)</label>
                 <table class="items-table"><thead><tr><th>Designation</th><th>Qte</th><th>Prix unit. HT (FCFA)</th><th>Total HT</th><th></th></tr></thead><tbody id="itemsBody"></tbody></table>
@@ -156,7 +170,7 @@
 </div>
 
 <script>
-    const company = { name: "AIGLE SERVICE", address: "Korhogo, quartier Sodepra - Cote d'Ivoire", phone: "+225 07 88 48 53 48 / 01 01 01 07 56" };
+    const company = { name: "AIGLE SERVICE", address: "Korhogo, quartier Sodepra - Côte d'Ivoire", phone: "+225 07 88 48 53 48 / 01 01 01 07 56" };
     let items = [];
     let currentType = "proforma";
     let savedPaymentMethod = "Orange Money";
@@ -245,15 +259,13 @@
         if (currentType === 'proforma') {
             title = 'DEMANDE DE PAIEMENT';
             subtitle = 'Facture Proforma - Non acquittee';
-            badgeText = 'Proforma (a regler)';
-            paymentBlock = `<div class="payment-request-box"><div style="font-weight:700;">DEMANDE DE PAIEMENT - Veuillez regler le montant ci-dessous.</div><div><strong>Coordonnees :</strong></div><div style="margin:6px 0 0 12px;"> Orange Money / Wave : +225 07 88 48 53 48<br> Especes : agence AIGLE SERVICE, Korhogo</div><div style="margin-top:10px; background:#fff6e8; padding:6px 10px; border-radius:12px;">Veuillez nous communiquer la preuve de paiement.<br><strong>Apres paiement, nous emettrons la facture definitive.</strong></div></div>`;
+            badgeText = 'Proforma (à régler)';
+            paymentBlock = `<div class="payment-request-box"><div style="font-weight:700;">DEMANDE DE PAIEMENT - Veuillez regler le montant ci-dessous.</div><div><strong>Coordonnees :</strong></div><div style="margin:6px 0 0 12px;"> Orange Money / Wave : +225 07 88 48 53 48<br> Especes : agence AIGLE SERVICE, Korhogo</div><div style="margin-top:10px; background:#fff6e8; padding:6px 10px; border-radius:12px;">Veuillez nous communiquer la preuve de paiement.<br><strong>Apres paiement, nous emettrons la facture définitive.</strong></div></div>`;
         } else {
-            title = 'FACTURE DEFINITIVE';
-            subtitle = 'Paiement integralement recu - Acquittee';
+            title = 'FACTURE définitive';
+            subtitle = 'Paiement integralement reçu - Acquittée';
             badgeText = 'Paye (Facture acquittee)';
-            paymentBlock = `<div class="payment-received-box"><div style="font-weight:700;">PAIEMENT VALIDE - Facture acquittee</div><div style="margin-top:6px;">Montant total: <strong>${totals.totalTTC.toFixed(0)} FCFA</strong> regle via <select id="paymentMethodConfirm" style="border:1px solid #ccc; padding:3px 6px; border-radius:16px; font-size:0.7rem; margin-left:4px;"><option value="Orange Money" ${savedPaymentMethod === 'Orange Money' ? 'selected' : ''}>Orange Money</option><option value="Wave" ${savedPaymentMethod === 'Wave' ? 'selected' : ''}>Wave</option><option value="Especes" ${savedPaymentMethod === 'Especes' ? 'selected' : ''}>Especes</option><option value="Virement" ${savedPaymentMethod === 'Virement' ? 'selected' : ''}>Virement</option></select></div><div style="margin-top:6px; font-size:0.65rem;">Cette facture annule et remplace toute proforma.</div></div>`;
-        }
-
+paymentBlock = `<div class="payment-received-box"><div style="font-weight:700;">PAIEMENT VALIDE - Facture acquittee</div><div style="margin-top:6px;">Montant total: <strong>${totals.totalTTC.toFixed(0)} FCFA</strong> regle via <select id="paymentMethodConfirm" style="background:#fff; color:#000; border:1px solid #ff9800; border-radius:4px; appearance:none; -webkit-appearance:none; -moz-appearance:none; padding:2px 8px; margin-left:4px; font-size:0.7rem; font-weight:600; outline:none; cursor:pointer;"><option value="Orange Money" ${savedPaymentMethod === 'Orange Money' ? 'selected' : ''}>Orange Money</option><option value="Wave" ${savedPaymentMethod === 'Wave' ? 'selected' : ''}>Wave</option><option value="Especes" ${savedPaymentMethod === 'Especes' ? 'selected' : ''}>Especes</option><option value="Virement" ${savedPaymentMethod === 'Virement' ? 'selected' : ''}>Virement</option></select></div><div style="margin-top:6px; font-size:0.65rem;">Cette facture annule et remplace toute proforma.</div></div>`;
         let rowsHtml = '';
         items.forEach(item => {
             const qty = parseFloat(item.qty) || 0;
@@ -262,7 +274,7 @@
         });
         if (!items.length) rowsHtml = '<tr><td colspan="4" style="text-align:center;">Aucune prestation ajoutee</td></tr>';
 
-        livePreviewDiv.innerHTML = `<div id="previewContent"><div style="margin-bottom:16px; border-bottom:2px solid #f39c12;"><div style="display:flex; justify-content:space-between;"><div><div style="font-weight:800; font-size:1.2rem; color:#f39c12;">AIGLE SERVICE</div><div style="font-size:0.6rem;">${escapeHtml(company.address)}</div><div style="font-size:0.6rem;">Tel: ${escapeHtml(company.phone)}</div></div><div style="text-align:right;"><div style="font-size:1.1rem; font-weight:800; color:#f39c12;">${title}</div><div style="font-size:0.55rem;">${subtitle}</div>${currentType === 'payment' ? '<div class="badge-paid" style="margin-top:4px;">PAIEMENT RECU</div>' : ''}</div></div></div><div style="display:flex; justify-content:space-between; margin-bottom:12px;"><div><strong>N° ${escapeHtml(docNumber)}</strong><br>Date: ${escapeHtml(docDate)}</div><div><strong>Client:</strong> ${escapeHtml(client)}<br>${clientPhone ? 'Tel: ' + escapeHtml(clientPhone) : ''}</div></div><div style="margin-bottom:12px; font-size:0.7rem;">Adresse: ${escapeHtml(clientAddr)}</div><table class="preview-table" style="width:100%;"><thead><tr style="background:#f5f5f5;"><th>Designation</th><th class="right">Qte</th><th class="right">Prix unit.</th><th class="right">Total HT</th></tr></thead><tbody>${rowsHtml}</tbody></table><div style="margin-top:8px; text-align:right;"><div>Total HT: ${totals.totalHT.toFixed(0)} FCFA</div>${totals.taxRate > 0 ? `<div>TVA (${totals.taxRate}%): ${totals.vat.toFixed(0)} FCFA</div>` : '<div>TVA 0%</div>'}<div style="font-size:1.1rem; font-weight:800; margin-top:6px; color:#f39c12;">TOTAL TTC: ${totals.totalTTC.toFixed(0)} FCFA</div></div>${paymentBlock}${notes ? `<div style="margin-top:12px; background:#FAFAFA; padding:8px; border-radius:14px;">Note: ${escapeHtml(notes)}</div>` : ''}<div class="signature-area"><span>Fait a Korhogo, le ${new Date().toLocaleDateString('fr-FR')}</span><span>Signature client + Cachet</span></div><div style="font-size:0.55rem; text-align:center; margin-top:10px;">${currentType === 'proforma' ? 'Document de demande de paiement.' : 'Facture definitive acquittee.'}</div></div>`;
+        livePreviewDiv.innerHTML = `<div id="previewContent"><div style="margin-bottom:16px; border-bottom:2px solid #f39c12;"><div style="display:flex; justify-content:space-between;"><div><div style="font-weight:800; font-size:1.2rem; color:#f39c12;">AIGLE SERVICE</div><div style="font-size:0.6rem;">${escapeHtml(company.address)}</div><div style="font-size:0.6rem;">Tel: ${escapeHtml(company.phone)}</div></div><div style="text-align:right;"><div style="font-size:1.1rem; font-weight:800; color:#f39c12;">${title}</div><div style="font-size:0.55rem;">${subtitle}</div>${currentType === 'payment' ? '<div class="badge-paid" style="margin-top:4px;">Paiement Reçu</div>' : ''}</div></div></div><div style="display:flex; justify-content:space-between; margin-bottom:12px;"><div><strong>N° ${escapeHtml(docNumber)}</strong><br>Date: ${escapeHtml(docDate)}</div><div><strong>Client:</strong> ${escapeHtml(client)}<br>${clientPhone ? 'Tel: ' + escapeHtml(clientPhone) : ''}</div></div><div style="margin-bottom:12px; font-size:0.7rem;">Adresse: ${escapeHtml(clientAddr)}</div><table class="preview-table" style="width:100%;"><thead><tr style="background:#f5f5f5;"><th>Designation</th><th class="right">Qte</th><th class="right">Prix unit.</th><th class="right">Total HT</th></tr></thead><tbody>${rowsHtml}</tbody></table><div style="margin-top:8px; text-align:right;"><div>Total HT: ${totals.totalHT.toFixed(0)} FCFA</div>${totals.taxRate > 0 ? `<div>TVA (${totals.taxRate}%): ${totals.vat.toFixed(0)} FCFA</div>` : '<div>TVA 0%</div>'}<div style="font-size:1.1rem; font-weight:800; margin-top:6px; color:#f39c12;">TOTAL TTC: ${totals.totalTTC.toFixed(0)} FCFA</div></div>${paymentBlock}${notes ? `<div style="margin-top:12px; background:#FAFAFA; padding:8px; border-radius:14px;">Note: ${escapeHtml(notes)}</div>` : ''}<div class="signature-area"><span>Fait a Korhogo, le ${new Date().toLocaleDateString('fr-FR')}</span><span>Signature client + Cachet</span></div><div style="font-size:0.55rem; text-align:center; margin-top:10px;">${currentType === 'proforma' ? 'Document de demande de paiement.' : 'Facture définitive acquittee.'}</div></div>`;
         
         docTypeBadge.innerText = badgeText;
         
@@ -285,14 +297,14 @@
     function resetForm() {
         items = [{ desc: "", qty: 1, price: 0 }];
         updateDocNumber(); setDefaultDate();
-        clientNameInput.value = ""; clientPhoneInput.value = ""; clientAddressInput.value = "Korhogo, Cote d'Ivoire";
-        notesField.value = currentType === 'proforma' ? "Merci de nous faire parvenir la preuve de paiement." : "Paiement receptionne avec succes.";
+        clientNameInput.value = ""; clientPhoneInput.value = ""; clientAddressInput.value = "Korhogo, Côte d'Ivoire";
+        notesField.value = currentType === 'proforma' ? "Merci de nous faire parvenir la preuve de paiement." : "Paiement receptionné avec succes.";
         taxRateInput.value = "0";
         savedPaymentMethod = "Orange Money";
         refreshAll();
     }
     function switchToProforma() { currentType = "proforma"; updateDocNumber(); notesField.value = "Merci de nous faire parvenir la preuve de paiement."; resetForm(); }
-    function switchToPayment() { currentType = "payment"; updateDocNumber(); notesField.value = "Paiement integral receptionne. Facture acquittee."; resetForm(); }
+    function switchToPayment() { currentType = "payment"; updateDocNumber(); notesField.value = "Paiement integral receptionné. Facture acquittée."; resetForm(); }
 
     document.getElementById('addItemBtn').onclick = addNewLine;
     document.getElementById('createProformaBtn').onclick = switchToProforma;
