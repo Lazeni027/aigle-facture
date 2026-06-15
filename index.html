@@ -6,7 +6,6 @@
     <title>AIGLE SERVICE | Facture Proforma & Paiement</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -26,7 +25,7 @@
             margin: 0 auto;
         }
 
-        /* HEADER - Orange, Gris, Noir (sans emoji) */
+        /* HEADER - Orange, Gris, Noir */
         .main-header {
             background: #1a1a1a;
             border-radius: 20px;
@@ -362,7 +361,6 @@
             font-weight: 600;
         }
 
-        /* Ajustements mobile */
         @media (max-width: 550px) {
             body {
                 padding: 12px 8px;
@@ -379,6 +377,53 @@
             .btn {
                 padding: 6px 14px;
                 font-size: 0.7rem;
+            }
+        }
+
+        /* STYLE POUR L'IMPRESSION PDF (A5) - aucune page blanche */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+                margin: 0;
+            }
+            .main-header, .action-buttons, .card:first-child, .watermark-note, footer, #generatePdfBtn, .add-item-btn, .item-delete {
+                display: none !important;
+            }
+            .dashboard {
+                display: block;
+                margin: 0;
+                padding: 0;
+            }
+            .card {
+                box-shadow: none;
+                border: none;
+                margin: 0;
+                padding: 0;
+            }
+            .card:last-child {
+                display: block;
+                width: 100%;
+            }
+            .doc-preview {
+                padding: 0;
+                margin: 0;
+                border: none;
+            }
+            #previewContent {
+                margin: 0;
+                padding: 0.3cm;
+                font-size: 11pt;
+            }
+            .payment-request-box, .payment-received-box {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+            .preview-table th, .preview-table td {
+                padding: 4px 2px;
+            }
+            .signature-area {
+                margin-top: 20px;
             }
         }
     </style>
@@ -468,10 +513,10 @@
             <div class="card-body doc-preview">
                 <div id="livePreview"></div>
                 <div style="display: flex; gap: 12px; justify-content: flex-end; margin-top: 20px;">
-                    <button id="generatePdfBtn" class="btn btn-proforma" style="background:#1a1a1a; color:#f39c12;"><i class="fas fa-file-pdf"></i> Generer PDF (A5)</button>
+                    <button id="generatePdfBtn" class="btn btn-proforma" style="background:#1a1a1a; color:#f39c12;"><i class="fas fa-print"></i> Imprimer / PDF (A5)</button>
                 </div>
                 <div class="watermark-note">
-                    Document officiel AIGLE SERVICE - Impression PDF optimisee
+                    Cliquez sur Imprimer, puis choisissez "Enregistrer au format PDF" - Format A5
                 </div>
             </div>
         </div>
@@ -482,7 +527,7 @@
 </div>
 
 <script>
-    // AIGLE SERVICE - Sans emoji, numerotation auto date/heure, designations vides
+    // AIGLE SERVICE - Impression directe via window.print (100% mobile)
     const company = {
         name: "AIGLE SERVICE",
         address: "Korhogo, quartier Sodepra - Cote d'Ivoire",
@@ -493,7 +538,6 @@
     let items = [];
     let currentType = "proforma";
 
-    // DOM elements
     const itemsBody = document.getElementById('itemsBody');
     const totalHTspan = document.getElementById('totalHT');
     const totalVATspan = document.getElementById('totalVAT');
@@ -509,7 +553,6 @@
     const docTypeBadge = document.getElementById('docTypeBadge');
     const livePreviewDiv = document.getElementById('livePreview');
 
-    // Generation numero document base date/heure (sans emoji)
     function generateDocumentNumber(prefix = "PRO") {
         const now = new Date();
         const year = now.getFullYear();
@@ -764,18 +807,12 @@
         docTypeBadge.innerText = badgeText;
     }
 
-    function generatePdf() {
-        const element = document.getElementById('previewContent');
-        if (!element) return;
-        const prefix = currentType === 'proforma' ? 'DEMANDE_PAIEMENT' : 'FACTURE_ACQUITTEE';
-        const opt = {
-            margin: [0.5, 0.5, 0.5, 0.5],
-            filename: `AIGLE_${prefix}_${docNumberInput.value.trim() || 'document'}.pdf`,
-            image: { type: 'jpeg', quality: 0.98 },
-            html2canvas: { scale: 2, useCORS: true, letterRendering: true },
-            jsPDF: { unit: 'cm', format: 'a5', orientation: 'portrait' }
-        };
-        html2pdf().set(opt).from(element).save();
+    // Impression directe - fonctionne parfaitement sur mobile et desktop
+    function printDocument() {
+        const originalTitle = document.title;
+        document.title = `AIGLE_${currentType === 'proforma' ? 'PROFORMA' : 'FACTURE'}_${docNumberInput.value.trim()}`;
+        window.print();
+        document.title = originalTitle;
     }
 
     function addNewLine() {
@@ -823,7 +860,7 @@
     document.getElementById('createProformaBtn').addEventListener('click', switchToProforma);
     document.getElementById('createPaymentBtn').addEventListener('click', switchToPayment);
     document.getElementById('resetBtn').addEventListener('click', resetForm);
-    document.getElementById('generatePdfBtn').addEventListener('click', generatePdf);
+    document.getElementById('generatePdfBtn').addEventListener('click', printDocument);
 
     taxRateInput.addEventListener('input', () => { computeTotals(); updatePreview(); });
     docDateInput.addEventListener('input', updatePreview);
